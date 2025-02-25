@@ -17,11 +17,9 @@ jobs:
           distribution: 'temurin'
       - name: Build APK
         run: chmod +x ./gradlew && ./gradlew assembleRelease
-      - name: Find APK
-        run: find . -name "*.apk" || echo "No APK found"
       - name: Deploy to Firebase
         run: |
-          npx firebase-tools appdistribution:distribute app/build/outputs/apk/release/app-release.apk \
+          npx firebase-tools appdistribution:distribute app/build/outputs/apk/release/app-release-unsigned.apk \
             --app "$FIREBASE_APP_ID" \
             --token "$FIREBASE_TOKEN" \
             --groups "testers"
