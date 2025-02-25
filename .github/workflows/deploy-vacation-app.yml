@@ -21,8 +21,7 @@ jobs:
         run: |
           npx firebase-tools appdistribution:distribute app/build/outputs/apk/release/app-release-unsigned.apk \
             --app "$FIREBASE_APP_ID" \
-            --token "$FIREBASE_TOKEN" \
-            --groups "testers"
+            --token "$FIREBASE_TOKEN"
         env:
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
